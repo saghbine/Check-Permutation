@@ -3,9 +3,7 @@
 //  Check Permutation
 //
 //  Created by daniel saghbine on 12/8/24.
-//
-//  CTCI 1.2 Check Permutation: Given two strings, write a method to decide if one is a permutation of the other.
-//  Auxiliary space complexity: O(1). Time complexity: O(n log n).
+//  CTCI 1.2 Check Permutation
 
 #include <iostream>
 using namespace std;
@@ -16,12 +14,16 @@ int main()
 {
     string str1, str2;
     
-    cout<<"Type a string: ";
+    cout<<"problem\n-------\n\tGiven two strings, write a method to decide if one is a permutation of the other.\n\n";
+    
+    cout<<"input\n-----\n\tType: ";
     cin>>str1;
-    cout<<"Type another string: ";
+    cout<<"\tType again: ";
     cin>>str2;
     
-    cout<<"The strings are"<<(Check_Permutation(str1, str2) ? "" : "n't")<<" permutations of each other.\n";
+    cout<<"\noutput\n------\n\tThe strings are"<<(Check_Permutation(str1, str2) ? "" : "n't")<<" permutations of each other.\n\n";
+    
+    cout<<"solution\n--------\n\tAuxiliary space complexity: O(1); time complexity: O(n log n).\n\n";
     
     return 0;
 }
@@ -86,13 +88,13 @@ void heapsort(string &s)
     }
 }
 
-bool Check_Permutation(string &s1, string &s2) // s1 is the first C++ string and s2 is the second
+bool Check_Permutation(string &s1, string &s2) // s1 and s2 are input strings
 {
-    heapsort(s1); // sort the first string with heapsort
-    heapsort(s2); // sort the second string with heapsort
+    heapsort(s1); // sort s1 with heapsort
+    heapsort(s2); // sort s2 with heapsort
     
-    if(s1 == s2) // check if the strings are the same thing
+    if(s1 == s2) // check if they are equivalent
         return true; // they are permutations
     
-    return false; // they are not permutations
+    return false; // they aren't permutations
 }
