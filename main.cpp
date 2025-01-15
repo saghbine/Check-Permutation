@@ -84,7 +84,7 @@ void heapsort(string &s)
 
 bool Check_Permutation(string &s1, string &s2) // s1 and s2 are input strings
 {
-    if(s1.size() != s2.size()) // they don't share same size
+    if(s1.size() != s2.size()) // if they don't share same size
         return false; // they aren't permutations
     
     heapsort(s1); // sort s1 with heapsort
