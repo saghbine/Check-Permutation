@@ -1,9 +1,9 @@
 //
 //  main.cpp
-//  Check Permutation
+//  CTCI 1.2 Check Permutation
 //
 //  Created by daniel saghbine on 12/8/24.
-//  CTCI 1.2 Check Permutation
+//
 
 #include <iostream>
 using namespace std;
@@ -12,16 +12,15 @@ bool Check_Permutation(string &s1, string &s2);
 
 int main()
 {
-    string str1, str2;
-    
     cout<<"problem\n-------\n\tGiven two strings, write a method to decide if one is a permutation of the other.\n\n";
     
     cout<<"input\n-----\n\tType: ";
-    cin>>str1;
+    string str1, str2;
+    getline(cin, str1);
     cout<<"\tType again: ";
-    cin>>str2;
+    getline(cin, str2);
     
-    cout<<"\noutput\n------\n\tThe strings are"<<(Check_Permutation(str1, str2) ? "" : "n't")<<" permutations of each other.\n\n";
+    cout<<"\noutput\n------\n\t\""<<str1<<"\" and \""<<str2<<"\" are"<<(Check_Permutation(str1, str2) ? "" : "n't")<<" permutations.\n\n";
     
     cout<<"solution\n--------\n\tAuxiliary space complexity: O(1); time complexity: O(n log n).\n\n";
     
@@ -69,17 +68,12 @@ void max_heapify(string &s, int n, int i)
     while(swap);
 }
 
-void build_max_heap(string &s)
-{
-    for(int i=int(s.size())/2-1; i >= 0; i--)
-        max_heapify(s, int(s.size()), i);
-}
-
 void heapsort(string &s)
 {
     int counter=int(s.size());
     
-    build_max_heap(s);
+    for(int i=int(s.size())/2-1; i >= 0; i--)
+        max_heapify(s, int(s.size()), i);
     
     while(counter > 1)
     {
@@ -90,10 +84,13 @@ void heapsort(string &s)
 
 bool Check_Permutation(string &s1, string &s2) // s1 and s2 are input strings
 {
+    if(s1.size() != s2.size()) // they don't share same size
+        return false; // they aren't permutations
+    
     heapsort(s1); // sort s1 with heapsort
     heapsort(s2); // sort s2 with heapsort
     
-    if(s1 == s2) // check if they are equivalent
+    if(s1 == s2) // if they are equivalent
         return true; // they are permutations
     
     return false; // they aren't permutations
