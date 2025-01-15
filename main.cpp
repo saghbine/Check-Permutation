@@ -90,8 +90,8 @@ bool Check_Permutation(string &s1, string &s2) // s1 and s2 are input strings
     heapsort(s1); // sort s1 with heapsort
     heapsort(s2); // sort s2 with heapsort
     
-    if(s1 == s2) // if they are equivalent
-        return true; // they are permutations
+    if(s1 != s2) // if they aren't equivalent
+        return false; // they aren't permutations
     
-    return false; // they aren't permutations
+    return true; // they are permutations
 }
